@@ -5,14 +5,12 @@ import ProjectsLayout from '../components/ProjectsLayout'
 
 export default function Projects() {
   return (
-    <ProjectsLayout>
+   <div className=' bg-slate-900 min-h-screen'>
+
+   
+     <ProjectsLayout>
       <ProjectsCard/>
-      <ProjectsCard/>
-      <ProjectsCard/>
-      <ProjectsCard/>
-      <ProjectsCard/>
-      <ProjectsCard/>
-      <ProjectsCard/>
-    </ProjectsLayout>
+      </ProjectsLayout>
+      </div>   
   )
 }

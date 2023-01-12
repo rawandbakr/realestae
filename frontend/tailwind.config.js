@@ -4,6 +4,13 @@ module.exports = {
   theme: {
     extend: {
       
+      colors: {
+        primary: '#2B2D42',
+        secondary: '#EDF2F4',
+        primary2: '#8D99AE',
+        secondary2: '#EF233C',
+        accent:'#D90429',
+      }
     },
     screens: {
       'sm': '320px',
@@ -21,13 +28,7 @@ module.exports = {
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
     },
-    colors: {
-      primary: '#2B2D42',
-      secondary: '#EDF2F4',
-      primary2: '#8D99AE',
-      secondary2: '#EF233C',
-      accent:'#D90429',
-    }
+   
   },
   plugins: [],
 }

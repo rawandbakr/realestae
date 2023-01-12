@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 export default function Nav() {
   return (
-    <header className=' bg-secondary h-24 font-semibold flex'>
+    <header className=' bg-secondary h-24 font-semibold'>
         <nav className=' p-5'>
-                <Link to='/' className=' grid grid-flow-col gap-3'>
-                <img src="https://cdn-icons-png.flaticon.com/512/2163/2163350.png" className=' h-10 w-10' alt='icon'/>
-                <h1 className=' text-accent text-4xl'>realestate</h1>
+                <Link to='/' className=' flex block'>
+                <img src={require('../assets/house.png')} className=' h-10 w-10' alt='icon'/>
+                <h1 className=' text-accent text-4xl pl-3'>realestate</h1>
                 </Link>
-            <ul className=' flex justify-between'>
+            <ul className=' flex gap-2'>
                 <Link to='/'>
                 Home
                 </Link>
@@ -24,4 +24,3 @@ export default function Nav() {
     </header>
   )
 }
-//how to add a img in html?
