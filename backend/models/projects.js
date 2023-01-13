@@ -5,7 +5,7 @@ const projectSchema = new Schema(
   {
     title: { type: String, required: true },
     adress: { type: String, required: true },
-    meter: { type: String, required: true },
+    meter: { type: Number, required: true },
     livingroom: { type: String, required: true },
     bathroom: { type: String, required: true },
     discription: { type: String, required: true },
