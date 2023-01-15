@@ -19,6 +19,10 @@ export default function Nav() {
                 <Link to='/login'>
                 login
                 </Link>
+                <Link to='/post'>
+                post
+                </Link>
+                
             </ul>
         </nav>
     </header>

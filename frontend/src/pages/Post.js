@@ -1,31 +1,47 @@
 import { useState } from "react";
+import { useDispatch } from 'react-redux';
+import { createProject } from '../actions/projects';
+
 
 function Post() {
-  const [Title, setTitle] = useState("");
+  const [title, setTitle] = useState("");
   const [adress, setAdress] = useState("");
   const [meter, setMeter] = useState("");
   const [livingroom, setLivingroom] = useState("");
   const [bathroom, setBathroom] = useState("");
   const [discription, setDiscription] = useState("");
   const [price, setPrice] = useState("");
-  const [Cardphoto, setCardphoto] = useState("");
+  const [cardphoto, setCardphoto] = useState("");
   const [virtualtour, setVirtualtour] = useState("");
   const [error, setError] = useState(null);
+  const [project, setProject] = useState({
+    title,
+    adress,
+    meter,
+    livingroom,
+    bathroom,
+    discription,
+    price,
+    cardphoto,
+    virtualtour,
+  });
+  const dispatch = useDispatch();
 
-  const handleSubmit = async (e) => {
+  const createPost =async (e) => {
     e.preventDefault();
-  };
+     dispatch(createProject(project))
+  } 
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={createPost}
       className="bg-primary p-6 rounded-lg flex flex-col">
       <label className="formLabel">
         Title:
         <input
           className="formInput"
           type="text"
-          value={Title}
+          value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
       </label>
@@ -97,13 +113,13 @@ function Post() {
         Cardphoto:
         <input
           className="formInput"
-          type="file"
+          type="text"
           onChange={(e) => setCardphoto(e.target.value)}
-          value={Cardphoto}
+          value={cardphoto}
         />
       </label>
       <br/>
-      <button className="  block bg-neutral-400 flex justify-center w-24 rounded-md">Add Project</button>
+      <button type="submit"  className="  block bg-neutral-400 flex justify-center w-24 rounded-md">Add Project</button>
       {error && <div className="error">{error}</div>}
     </form>
   );
