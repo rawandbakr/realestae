@@ -14,27 +14,32 @@ function Post() {
   const [cardphoto, setCardphoto] = useState("");
   const [virtualtour, setVirtualtour] = useState("");
   const [error, setError] = useState(null);
-  const [project, setProject] = useState({
-    title,
-    adress,
-    meter,
-    livingroom,
-    bathroom,
-    discription,
-    price,
-    cardphoto,
-    virtualtour,
-  });
   const dispatch = useDispatch();
 
-  const createPost =async (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
-     dispatch(createProject(project))
-  } 
+    const Project=({title,
+      adress,
+      meter,
+      livingroom,
+      bathroom,
+      discription,
+      price,
+      cardphoto,
+      virtualtour})
+      try {
+        dispatch(createProject(Project),[dispatch]);
+        console.log(Project)
+      } catch (e) {
+        alert(e)
+      }
+      
+    }
+    
 
   return (
     <form
-      onSubmit={createPost}
+      onSubmit={handleSubmit}
       className="bg-primary p-6 rounded-lg flex flex-col">
       <label className="formLabel">
         Title:

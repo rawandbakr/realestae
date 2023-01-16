@@ -6,12 +6,11 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 
 export default function Projects() {
-  const [currentId, setCurrentId] = useState(0);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProjects());
-  }, [currentId, dispatch]);
+  },[]);
   
   const projects = useSelector((state) => state.projects);
 

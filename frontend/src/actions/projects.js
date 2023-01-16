@@ -13,7 +13,8 @@ export const getProjects = () => async (dispatch) => {
 };
 export const createProject=(project)=> async (dispatch)=>{
   try {
-   const{data}= await api.postProject(project);
+    const { data }= await api.postProject(project);
+
     dispatch({type:CREATE ,payload:data})
     
   }  catch (error) {
