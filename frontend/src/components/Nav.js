@@ -5,7 +5,7 @@ export default function Nav() {
   return (
     <header className=' bg-secondary h-24 font-semibold'>
         <nav className=' p-5'>
-                <Link to='/' className=' flex block'>
+                <Link to='/' className='flex'>
                 <img src={require('../assets/house.png')} className=' h-10 w-10' alt='icon'/>
                 <h1 className=' text-accent text-4xl pl-3'>realestate</h1>
                 </Link>
