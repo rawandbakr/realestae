@@ -17,12 +17,12 @@ export default function Projects() {
 
   return (
     <div className=" bg-slate-900 min-h-screen">
-      <>
+      <ProjectsLayout>
         {projects &&
           projects.map((project) => (
             <ProjectsCard project={project} key={project._id} />
           ))}
-      </>
+      </ProjectsLayout>
     </div>
     
   );
