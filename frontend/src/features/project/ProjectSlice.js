@@ -3,18 +3,18 @@ import { createSlice } from '@reduxjs/toolkit'
 export const ProjectSlice = createSlice({
   name: 'Project',
   initialState: {
-    values:[],
+    value:0,
   },
   reducers: {
     FETCH_ALL: (state,action) => {
-      state.values=action.payload
+      state.value=action.payload
     },
     CREATE:(state,action) => {
-      state.values=+action.payload
+      state.value+=action.payload
     },
     DELETE: (state, action) => {
-      state.values.filter((value)=>value._id!==action.payload);
-    },
+      state.value=state.value.filter((value)=>value._id!==action.payload._id);
+    }
   },
 })
 

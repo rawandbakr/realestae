@@ -13,7 +13,7 @@ export default function Projects() {
     console.log('useeffect run')
   },[dispatch]);  
   
-  const projects= useSelector((state) => state.projects.values)
+  const projects= useSelector((state) => state.projects.value)
 
   return (
     <div className=" bg-slate-900 min-h-screen">
