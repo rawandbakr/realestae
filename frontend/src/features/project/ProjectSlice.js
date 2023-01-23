@@ -10,7 +10,7 @@ export const ProjectSlice = createSlice({
       state.values=action.payload
     },
     CREATE:(state,action) => {
-      state.values+=action.payload
+      state.values=+action.payload
     },
     DELETE: (state, action) => {
       state.values.filter((value)=>value._id!==action.payload);

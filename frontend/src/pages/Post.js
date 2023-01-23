@@ -28,8 +28,7 @@ function Post() {
       cardphoto,
       virtualtour})
       try {
-        dispatch(createProject(Project),[dispatch]);
-        console.log(Project)
+        dispatch(createProject(Project));
       } catch (e) {
         alert(e)
       }

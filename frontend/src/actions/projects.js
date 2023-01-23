@@ -1,11 +1,10 @@
-import {FETCH_ALL ,CREATE ,DELETE } from "../reducers/ProjectSlice"
+import {FETCH_ALL ,CREATE ,DELETE } from "../features/project/ProjectSlice"
 import * as api from '../api/index.js';
 
 export const getProjects = () => async (dispatch) => {
   try {
     const { data } = await api.fetchProjects();
-    console.log(data)
-    dispatch({ type: FETCH_ALL, payload: data });
+    dispatch(FETCH_ALL(data));
   } catch (error) {
     console.log(error.message);
   }
@@ -13,19 +12,15 @@ export const getProjects = () => async (dispatch) => {
 export const createProject=(project)=> async (dispatch)=>{
   try {
     const { data }= await api.postProject(project);
-
-    dispatch({type:CREATE ,payload:data})
-    
+    dispatch(CREATE(data));
   }  catch (error) {
     console.log(error.message);
   }
 };
-export const removeProject=(_id)=> async (dispatch)=>{
+export const removeProject=(id)=> async (dispatch)=>{
   try {
-    const { data }= await api.deleteProject(_id);
-
-    dispatch({type:DELETE ,payload:data})
-    
+    const { data }= await api.deleteProject(id);
+    dispatch(DELETE(data));
   }  catch (error) {
     console.log(error.message);
   }
