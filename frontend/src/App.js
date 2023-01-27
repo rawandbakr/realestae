@@ -4,6 +4,7 @@ import Projects from "./pages/Projects";
 import Login from "./pages/Login";
 import Nav from "./components/Nav";
 import Post from "./pages/Post";
+import ProjectDeatil from "./components/ProjectDeatil";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
          <Route path="/projects" element={<Projects />}/>
          <Route path="/login" element={<Login/>} />
          <Route path="/post" element={<Post/>} />
+         <Route path="/projects/:id" element={<ProjectDeatil/>}/>
     </Routes>
     </BrowserRouter>
   );

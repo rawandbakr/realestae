@@ -6,14 +6,14 @@ import { useSelector,useDispatch } from 'react-redux';
 
 export default function Projects() {
   const dispatch = useDispatch();
-  
+  const projects= useSelector((state) => state.projects.value)
 
   useEffect(() => {
     dispatch(getProjects());
     console.log('useeffect run')
   },[dispatch]);  
   
-  const projects= useSelector((state) => state.projects.value)
+  
 
   return (
     <div className=" bg-slate-900 min-h-screen">

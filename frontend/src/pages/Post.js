@@ -15,7 +15,18 @@ function Post() {
   const [virtualtour, setVirtualtour] = useState("");
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
-
+  const clearForm = () =>{
+    setTitle("")
+    setError("")
+    setVirtualtour("")
+    setCardphoto("")
+    setPrice("")
+    setDiscription("")
+    setBathroom("")
+    setLivingroom("")
+    setAdress("")
+    
+  }
   const handleSubmit =async (e) => {
     e.preventDefault();
     const Project=({title,
@@ -29,11 +40,14 @@ function Post() {
       virtualtour})
       try {
         dispatch(createProject(Project));
+        window.alert("posted succesfully ")
       } catch (e) {
         alert(e)
+        setError(e)
       }
-      
+      clearForm()
     }
+
     
 
   return (
