@@ -1,66 +1,55 @@
 import { useState } from "react";
-import { useDispatch } from 'react-redux';
-import { createProject } from '../actions/projects';
-
+import { useDispatch } from "react-redux";
+import { createProject } from "../actions/projects";
+import FileBase from "react-file-base64";
 
 function Post() {
-  const [title, setTitle] = useState("");
-  const [adress, setAdress] = useState("");
-  const [meter, setMeter] = useState("");
-  const [livingroom, setLivingroom] = useState("");
-  const [bathroom, setBathroom] = useState("");
-  const [discription, setDiscription] = useState("");
-  const [price, setPrice] = useState("");
-  const [cardphoto, setCardphoto] = useState("");
-  const [virtualtour, setVirtualtour] = useState("");
+  const [postData, setPostData] = useState({
+    title: "",
+    adress: "",
+    meter: "",
+    bathroom: "",
+    discription: "",
+    price: "",
+    cardphoto: "",
+    virtualtour: "",
+  });
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
-  const clearForm = () =>{
-    setTitle("")
-    setError("")
-    setVirtualtour("")
-    setCardphoto("")
-    setPrice("")
-    setDiscription("")
-    setBathroom("")
-    setLivingroom("")
-    setAdress("")
-    
-  }
-  const handleSubmit =async (e) => {
+  const clearForm = () => {
+    setPostData({
+      title: "",
+      adress: "",
+      meter: "",
+      bathroom: "",
+      discription: "",
+      price: "",
+      cardphoto: "",
+      virtualtour: "",
+    });
+  };
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const Project=({title,
-      adress,
-      meter,
-      livingroom,
-      bathroom,
-      discription,
-      price,
-      cardphoto,
-      virtualtour})
-      try {
-        dispatch(createProject(Project));
-        window.alert("posted succesfully ")
-      } catch (e) {
-        alert(e)
-        setError(e)
-      }
-      clearForm()
+    try {
+      dispatch(createProject(postData));
+      window.alert("posted succesfully ");
+    } catch (e) {
+      setError(e);
     }
-
-    
+    clearForm();
+  };
 
   return (
     <form
       onSubmit={handleSubmit}
       className="bg-primary p-6 rounded-lg flex flex-col">
       <label className="formLabel">
-        Title:
+        title:
         <input
           className="formInput"
           type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={postData.title}
+          onChange={(e) => setPostData({ ...postData, title: e.target.value })}
         />
       </label>
 
@@ -69,8 +58,8 @@ function Post() {
         <input
           className="formInput"
           type="text"
-          onChange={(e) => setAdress(e.target.value)}
-          value={adress}
+          value={postData.adress}
+          onChange={(e) => setPostData({ ...postData, adress: e.target.value })}
         />
       </label>
       <label className="formLabel">
@@ -78,8 +67,8 @@ function Post() {
         <input
           className="formInput"
           type="number"
-          onChange={(e) => setMeter(e.target.value)}
-          value={meter}
+          value={postData.meter}
+          onChange={(e) => setPostData({ ...postData, meter: e.target.value })}
         />
       </label>
       <label className="formLabel">
@@ -87,8 +76,10 @@ function Post() {
         <input
           className="formInput"
           type="text"
-          onChange={(e) => setLivingroom(e.target.value)}
-          value={livingroom}
+          value={postData.livingroom}
+          onChange={(e) =>
+            setPostData({ ...postData, livingroom: e.target.value })
+          }
         />
       </label>
       <label className="formLabel">
@@ -96,8 +87,10 @@ function Post() {
         <input
           className="formInput"
           type="text"
-          onChange={(e) => setBathroom(e.target.value)}
-          value={bathroom}
+          value={postData.bathroom}
+          onChange={(e) =>
+            setPostData({ ...postData, bathroom: e.target.value })
+          }
         />
       </label>
       <label className="formLabel">
@@ -105,8 +98,10 @@ function Post() {
         <input
           className="formInput"
           type="text"
-          onChange={(e) => setDiscription(e.target.value)}
-          value={discription}
+          value={postData.discription}
+          onChange={(e) =>
+            setPostData({ ...postData, discription: e.target.value })
+          }
         />
       </label>
       <label className="formLabel">
@@ -114,8 +109,8 @@ function Post() {
         <input
           className="formInput"
           type="Number"
-          onChange={(e) => setPrice(e.target.value)}
-          value={price}
+          value={postData.price}
+          onChange={(e) => setPostData({ ...postData, price: e.target.value })}
         />
       </label>
       <label className="formLabel">
@@ -123,21 +118,28 @@ function Post() {
         <input
           className="formInput"
           type="text"
-          onChange={(e) => setVirtualtour(e.target.value)}
-          value={virtualtour}
+          value={postData.virtualtour}
+          onChange={(e) =>
+            setPostData({ ...postData, virtualtour: e.target.value })
+          }
         />
       </label>
       <label className="formLabel">
         Cardphoto:
-        <input
-          className="formInput"
-          type="text"
-          onChange={(e) => setCardphoto(e.target.value)}
-          value={cardphoto}
+        <FileBase
+          type="file"
+          multiple={false}
+          onDone={({ base64 }) =>
+            setPostData({ ...postData, Cardphoto: base64 })
+          }
         />
       </label>
-      <br/>
-      <button type="submit"  className="  block bg-neutral-400 flex justify-center w-24 rounded-md">Add Project</button>
+      <br />
+      <button
+        type="submit"
+        className="  bg-neutral-400 flex justify-center w-24 rounded-md">
+        Add Project
+      </button>
       {error && <div className="error">{error}</div>}
     </form>
   );

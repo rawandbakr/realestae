@@ -1,13 +1,16 @@
 const express = require("express");
 const mongoose = require("mongoose");
-require("dotenv").config();
-const projectsRoutes =require('./routes/projects') 
-const app = express();
 const cors = require("cors")
+const projectsRoutes =require('./routes/projects') 
+require("dotenv").config();
+var bodyParser =require('body-parser');
 
-app.use(express.json())
+const app = express();
 
-app.use(cors())
+app.use(bodyParser.json({ limit: '30mb', extended: true }))
+app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
+app.use(cors());
+
 
 app.use((req, res, next) => {
   console.log(req.path, req.method);

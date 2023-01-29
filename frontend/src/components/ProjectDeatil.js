@@ -12,7 +12,7 @@ export default function ProjectDeatil() {
     <div>{projects.bathroom}</div>discription
     <div>{projects.discription}</div>virtualtour
     <div>{projects.virtualtour}</div>Cardphoto
-    <div>{projects.Cardphoto}</div>
+    <img src={projects.Cardphoto}/>
     </>
   )
 }
